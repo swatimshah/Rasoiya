@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.mymeal"
+    android:versionCode="2"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/photo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+        android:debuggable="false">
+        <activity
+            android:name=".MyMealActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_my_meal"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MealEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_meal_edit"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:searchSuggestAuthority="com.app.mymeal.MealCustomSuggestionProvider"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <provider
+            android:name=".MealCustomSuggestionProvider"
+            android:authorities="com.app.mymeal.MealCustomSuggestionProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="true" >
+        </provider>
+
+        <activity
+            android:name=".RecipeEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_recipe_edit"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name=".RecipesListActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_recipes_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RecipeSendActivity"
+            android:label="@string/title_activity_recipe_send" >
+        </activity>
+        <activity
+            android:name=".DemoActivity"
+            android:label="@string/title_activity_demo" >
+        </activity>
+    </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="MyMeal Tests"
+        android:targetPackage="com.app.mymeal" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

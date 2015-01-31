@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Mix Veg</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>20 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Small brinjal</name>
+	<quantity>150</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Potato</name>
+	<quantity>150</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Tomato</name>
+	<quantity>150</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Green peas</name>
+	<quantity>100</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Salt</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Red Chilli</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Sugar</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Turmeric Powder</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Mustard seeds</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Asafoetida(Hing)</name>
+	<quantity>1</quantity>
+	<unit>pinch</unit>
+</ingredient>	
+<ingredient>
+	<name>Oil</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Water</name>
+	<quantity>3</quantity>
+	<unit>cup</unit>
+</ingredient>	
+</ingredients>
+<method>
+<step>Wash all the vegetables (brinjal, potatos and tomatos) and cut them into small pieces of about 1/2 inch.</step>
+<step>Heat the oil in frying pan. Add Mustard seeds. When Mustard seeds crackle add Asafoetida.</step>
+<step>Add all the vegetables, green peas, water, red chilli, sugar, turmeric powder and salt.</step>
+<step>Boil for about 15 min. (It is OK if the water does not get absorbed completely.)</step>
+<step>Mix Veg is ready to serve. (Can serve to about 3 people. Can be consumed with paratha.)</step>
+</method>
+</meal>  

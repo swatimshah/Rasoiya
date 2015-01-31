@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Jeera Rice</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>30 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Basmati rice</name>
+	<quantity>1.5</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Water</name>
+	<quantity>3</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Cumin seeds</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Ghee</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Bay leaf</name>
+	<quantity>2</quantity>
+	<unit>quantity</unit>
+</ingredient>
+<ingredient>
+	<name>Cinnamon powder</name>
+	<quantity>2</quantity>
+	<unit>pinch</unit>
+</ingredient>
+<ingredient>
+	<name>Cloves</name>
+	<quantity>5</quantity>
+	<unit>quantity</unit>
+</ingredient>
+<ingredient>
+	<name>Salt</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Chopped coriander</name>
+	<quantity>0.5</quantity>
+	<unit>cup</unit>
+</ingredient>
+</ingredients>
+<method>
+	<step>Wash the rice and drain water. Add the rice in pressure cooker pan. Add water and Cook the rice in pressure cooker for about 15 min (until 2 whistles).</step>
+	<step>When the cooker cools down, remove the rice (drain it, if the water is not yet absorbed) and keep it for cooling in a large plate.</step>
+	<step>Heat the ghee in a frying pan and add the cumin seeds.</step>
+	<step>When the seeds crackle, add cloves powder, cinnamon powder and bay leaves.</step> 
+	<step>Add the rice, add salt and stir it for 5 minutes.</step>
+	<step>Add chopped coriander and the rice is ready to serve. (Can serve to about 3 people. Can be consumed with Daal Fry or Moong Daal or Chole)</step>
+</method>
+</meal>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Dum Aloo</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>50 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Potato (small)</name>
+	<quantity>250</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Tomato puree</name>
+	<quantity>1.5</quantity>
+	<unit>cup</unit>
+</ingredient>	
+<ingredient>
+	<name>Ginger paste</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Green chilli paste</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Cashew nuts paste</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Poppy seeds</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Bay leaf</name>
+	<quantity>2</quantity>
+	<unit>quantity</unit>
+</ingredient>	
+<ingredient>
+	<name>Cinnamon Powder</name>
+	<quantity>2</quantity>
+	<unit>pinch</unit>
+</ingredient>	
+<ingredient>
+	<name>Cloves</name>
+	<quantity>5</quantity>
+	<unit>quantity</unit>
+</ingredient>	
+<ingredient>
+	<name>Turmeric Powder</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Salt</name>
+	<quantity>2</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Oil</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Asafoetida(Hing)</name>
+	<quantity>2</quantity>
+	<unit>pinch</unit>
+</ingredient>
+<ingredient>
+	<name>Mustard seeds</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Water</name>
+	<quantity>3</quantity>
+	<unit>cup</unit>
+</ingredient>	
+<ingredient>
+	<name>Chopped coriander</name>
+	<quantity>0.5</quantity>
+	<unit>cup</unit>
+</ingredient>	
+</ingredients>
+<method>
+<step>Wash the potatos. Put them in pressure cooker pan. Add 1 cup of water. Add 0.5 tsp salt. Cook them into pressure cooker for 20 min (or for 3 whistles)</step>
+<step>When the cooker cools down, remove the potatos and keep them aside.</step>
+<step>Heat the oil in frying pan. Add Mustard seeds. When Mustard seeds crackle add Asafoetida.</step>
+<step>Add green chilli paste, ginger paste, bay leaves, cloves powder, cinnamon Powder, cashew nuts paste and poppy seeds. Heat it for about half a minute. Make sure you stir it at regular intervals</step>
+<step>Add tomato puree and heat it for about 5-7 min on a medium flame.</step>
+<step>Add the potatos, salt and turmeric powder. Stir it and let it simmer for about 5 min.</step>
+<step>Garnish it with chopped coriander and the Dum Aloo are ready to serve. (Can serve to about 3 people. Can be consumed with paratha or Jeera Rice.)</step>
+</method>
+</meal>  

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Moong Daal</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>40 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Moong Daal</name>
+	<quantity>1</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Water</name>
+	<quantity>3</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Oil</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Asafoetida(Hing)</name>
+	<quantity>2</quantity>
+	<unit>pinch</unit>
+</ingredient>	
+<ingredient>
+	<name>Cumin seeds</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Mustard seeds</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Curry Leaves</name>
+	<quantity>10</quantity>
+	<unit>quantity</unit>
+</ingredient>
+<ingredient>
+	<name>Tomato</name>
+	<quantity>2</quantity>
+	<unit>quantity</unit>
+</ingredient>
+<ingredient>
+	<name>Turmeric Powder</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Red Chilli</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Garam Masala</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Salt</name>
+	<quantity>1</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Chopped coriander</name>
+	<quantity>0.5</quantity>
+	<unit>cup</unit>
+</ingredient>
+</ingredients>
+<method>
+	<step>Wash the Moong daal. Put it in pressure cooker pan. Add water to it and cook the daal in pressure cooker for about 25 min (until 4-5 whistles).</step>
+	<step>When the cooker cools down, remove the daal and keep aside.</step>
+	<step>Chop the tomatos finely and keep aside.</step>
+	<step>Heat the oil in a frying pan and add Asafoetida, mustard seeds and cumin seeds. When the seeds crackle, add curry leaves</step> 
+	<step>When the curry leaves change color (from dark green to light green), add tomatos, turmeric powder, red chilli, garam masala and salt.</step>
+	<step>Stir it, heat it for 15 seconds and add the cooked Moong daal in it. Keep stirring. Let it simmer for 2 min.</step>
+	<step>Add chopped coriander and the Moong daal is ready to serve. (Can serve to about 3 people. It can be consumed along with plain rice)</step>
+</method>
+</meal>

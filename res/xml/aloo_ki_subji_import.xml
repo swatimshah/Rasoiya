@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Aloo Ki Subji</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>40 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Potato</name>
+	<quantity>300</quantity>
+	<unit>grams</unit>
+</ingredient>	
+<ingredient>
+	<name>Green Chilli</name>
+	<quantity>3</quantity>
+	<unit>quantity</unit>
+</ingredient>
+<ingredient>
+	<name>Curry Leaves</name>
+	<quantity>10</quantity>
+	<unit>quantity</unit>
+</ingredient>	
+<ingredient>
+	<name>Turmeric Powder</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Salt</name>
+	<quantity>1.5</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Sugar</name>
+	<quantity>2</quantity>
+	<unit>tsp</unit>
+</ingredient>
+<ingredient>
+	<name>Oil</name>
+	<quantity>2</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Asafoetida(Hing)</name>
+	<quantity>2</quantity>
+	<unit>pinch</unit>
+</ingredient>
+<ingredient>
+	<name>Mustard seeds</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+<ingredient>
+	<name>Chopped coriander</name>
+	<quantity>0.5</quantity>
+	<unit>cup</unit>
+</ingredient>	
+</ingredients>
+<method>
+<step>Wash the potatos. Put them in pressure cooker pan. Add 1 cup of water. Cook them into pressure cooker for 20 min (or for 3 whistles)</step>
+<step>When the cooker cools down, remove the potatos. Cut them into small pieces (of around 1 inch)</step>
+<step>Heat the oil in frying pan. Add Mustard seeds. When Mustard seeds crackle add Asafoetida.</step>
+<step>Add green chilli, curry leaves and turmeric powder. Heat it for about half a minute. Make sure you stir it at regular intervals</step>
+<step>Add the potatos, salt and sugar. Stir it and let it cook for about 5 min.</step>
+<step>Garnish it with chopped coriander and the 'aloo ki subji' is ready to serve. (Can serve to about 3 people. Can be consumed with paratha)</step>
+</method>
+</meal>  

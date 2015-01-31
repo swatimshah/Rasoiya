@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meal>
+<mealName>Paratha</mealName>
+<ethnicity>Indian</ethnicity>
+<prepTime>40 Min</prepTime>
+<mealType>Lunch, Dinner</mealType>
+<ingredients>
+<ingredient>
+	<name>Wheat Flour</name>
+	<quantity>2</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Water</name>
+	<quantity>1.5</quantity>
+	<unit>cup</unit>
+</ingredient>
+<ingredient>
+	<name>Oil</name>
+	<quantity>6</quantity>
+	<unit>tbsp</unit>
+</ingredient>
+<ingredient>
+	<name>Salt</name>
+	<quantity>0.5</quantity>
+	<unit>tsp</unit>
+</ingredient>	
+</ingredients>
+<method>
+	<step>Mix 1 cup of wheat flour with salt and 2 tbsp of oil.</step>
+	<step>Add water to it incrementally and knead it until a smooth dough is formed.</step>
+	<step>Grease the surface of dough with 0.5 teaspoon oil and Keep it aside for 10 min to settle.</step>
+	<step>Make the dough into round balls of about 1.5 inch each.</step> 
+	<step>Put a dough ball on roti making board (chakla) and roll it using rolling pin (belan) until it spreads into a circle of approx. 5-6 inches diameter.</step>
+	<step>Place it on a hot tava (flat and open pan) and bake over medium flame for approx. 30 seconds. Spread 0.5 tsp oil over its surface.</step>
+	<step>Flip it and bake it over the other side, for approx. 30 seconds. Spread 0.5 tsp oil over the surface.</step>
+	<step>Paratha are ready to serve. (Can serve to about 3-4 people. It can be consumed along with Moong Daal or Daal Fry or Chole)</step>
+</method>
+</meal>

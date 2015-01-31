@@ -1,0 +1,345 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Framelayout to display Fragments -->
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Listview to display slider menu -->
+    <ListView
+        android:id="@+id/list_slidermenu"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"       
+        android:listSelector="@drawable/list_selector"
+        android:background="@color/list_background"/>
+
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"> 
+
+
+        <LinearLayout
+            android:id="@+id/recipeLayout"        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true">
+
+
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			xmlns:tools="http://schemas.android.com/tools"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:focusableInTouchMode="true">
+
+
+            <TextView
+                android:id="@+id/lblRecipeName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:text="Recipe" />
+                        
+
+            <TextView
+                android:id="@+id/recipeName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="16.0sp"/>
+
+      	</LinearLayout>
+      	
+ 			<Button
+        		android:id="@+id/lblSaveMealUpper"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_alignParentRight="true"        		
+        		android:text="Save"
+        		android:onClick="onSaveRecipeButtonClick">
+ 			</Button>            
+      	
+      	
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"        
+            android:id="@+id/buttonLayout1" 
+            android:gravity="right" 
+            android:focusableInTouchMode="true">
+
+		
+		
+		</LinearLayout>      	
+      	
+        </RelativeLayout>      	
+			    
+            <TextView
+                android:id="@+id/lblEthnicity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text="Ethnicity  " />
+			    			    
+
+            <EditText
+                android:id="@+id/Ethnicity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="16.0sp"/>
+
+            <TextView
+                android:id="@+id/lblPrepTime"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text="Prep Time  " />
+
+            
+            <!--EditText
+                android:id="@+id/PrepTime"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:textSize="16.0sp"/-->
+
+ 			<Spinner
+        		android:id="@+id/spinner1"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:entries="@array/prep_time_arrays"/>
+
+            <!--TextView
+                android:id="@+id/lblMin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text=" Min" /-->
+
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			xmlns:tools="http://schemas.android.com/tools"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:id="@+id/lblIngredientsLayout">
+
+			<!--ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/icon_minus_for_ingredients"
+	   			android:layout_width="30dp"
+	  			android:layout_height="30dp"
+				android:src="@drawable/icon_minus"
+				android:layout_alignParentRight="true"
+				android:layout_weight="1"/--> 
+
+ 
+            <TextView
+                android:id="@+id/lblIngredients"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/ingredients" 
+                android:layout_toLeftOf="@+id/icon_minus_for_ingredients"/>
+
+
+
+			</RelativeLayout>
+
+
+        <LinearLayout android:id="@+id/ingredientsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:focusable="true">
+
+            
+          <!--  <EditText 
+                android:id="@+id/ingredients"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords|textMultiLine"
+                android:singleLine="true"
+                android:textSize="16.0sp"/> -->
+
+
+ 			</LinearLayout>
+            
+            <TextView
+                android:id="@+id/lblMealType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text="Meal Type  " />
+
+            
+            <!--EditText
+                android:id="@+id/mealType"
+                android:layout_width="fill_parent"
+                android:inputType="textCapWords"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"/-->
+                
+			
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			xmlns:tools="http://schemas.android.com/tools"
+    			android:layout_width="match_parent"
+    			android:layout_height="match_parent"
+    			tools:context="${relativePackage}.${activityClass}" >
+			            
+            
+			<CheckBox  
+        		android:id="@+id/checkBox1"  
+        		android:layout_width="wrap_content"  
+        		android:layout_height="wrap_content"  
+        		android:layout_alignParentLeft="true"  
+        		android:layout_alignParentTop="true"  
+        		android:text="Breakfast" />  
+  
+    		<CheckBox  
+        		android:id="@+id/checkBox2"  
+        		android:layout_width="wrap_content"  
+        		android:layout_height="wrap_content"  
+        		android:layout_alignParentTop="true"  
+        		android:layout_toRightOf="@+id/checkBox1"  
+		        android:text="Lunch" />  
+  
+    		<CheckBox  
+        		android:id="@+id/checkBox3"  
+        		android:layout_width="wrap_content"  
+        		android:layout_height="wrap_content"    
+        		android:layout_below="@+id/checkBox1"  
+        		android:text="Snacks" />              
+
+
+    		<CheckBox  
+        		android:id="@+id/checkBox4"  
+        		android:layout_width="wrap_content"  
+        		android:layout_height="wrap_content" 
+        		android:layout_below="@+id/checkBox2"        		   
+        		android:layout_toRightOf="@+id/checkBox3"  
+        		android:text="Dinner" />              
+                
+			</RelativeLayout>
+
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			xmlns:tools="http://schemas.android.com/tools"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:id="@+id/lblMethodLayout">
+
+			<!--ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/icon_minus"
+	   			android:layout_width="30dp"
+	  			android:layout_height="30dp"
+				android:src="@drawable/icon_minus"
+				android:layout_alignParentRight="true"
+				android:layout_weight="1"/--> 
+
+            <TextView
+                android:id="@+id/lblMethod"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/method" 
+                android:layout_toLeftOf="@+id/icon_minus"/>
+
+			</RelativeLayout>
+			
+			
+        <LinearLayout android:id="@+id/methodLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:focusable="true">
+
+
+         <!--   <EditText
+                android:id="@+id/method"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords|textMultiLine"
+                android:singleLine="true"
+                android:textSize="16.0sp"/>  --> 
+
+ 			</LinearLayout>
+
+
+
+        <!--LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:focusable="true">
+
+
+         <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords|textMultiLine"
+                android:singleLine="true"
+                android:textSize="16.0sp"
+                android:text="test"/> 
+
+ 			</LinearLayout-->
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="30dp">
+    </View>
+
+        <LinearLayout android:id="@+id/buttonLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+ 			
+ 			<Button
+        		android:id="@+id/lblSaveMeal"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="Save"
+        		android:onClick="onSaveRecipeButtonClick">
+ 			</Button>            
+
+		</LinearLayout>
+		
+ 			</LinearLayout>
+        
+
+  </ScrollView>
+    
+
+</RelativeLayout>
+</android.support.v4.widget.DrawerLayout> 

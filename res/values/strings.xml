@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Rasoiya</string>
+    <string name="title_activity_my_meal">Rasoiya</string>
+    <string name="hello_world">Hello world!</string>
+
+    <color name="white">#ffffff</color>
+    <color name="text_color">#31D1F1</color>
+
+    <string name="title_activity_meal_view">Meal View</string>
+    <string name="title_activity_meal_edit">Plan Meal</string>
+    <string name="title_activity_meal_search">Search Meal</string>
+    <string name="app_label">Search Meal</string>
+    <string name="search_hint">Recipes, Meal Type, Ingredients, Ethnicity</string>
+    <string name="title_activity_recipe_edit">Edit Recipe</string>
+
+    <string-array name="prep_time_arrays">
+        <item>0 Min</item>
+        <item>10 Min</item>
+        <item>20 Min</item>
+        <item>30 Min</item>
+        <item>40 Min</item>
+        <item>50 Min</item>
+        <item>60 Min</item>
+    </string-array>
+
+    <string name="Recipes">Recipes</string>
+    <string name="title_activity_recipes_list">List Recipes</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Recipes</item>
+    </string-array>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="unit_array">
+        <item>cup</item>
+        <item>tbsp</item>
+        <item>tsp</item>
+        <item>pinch</item>
+        <item>quantity</item>
+        <item>grams</item>
+    </string-array>
+
+    <string name="title_activity_recipe_send">Send Recipe</string>
+    <string name="method"><b><u>Method</u></b></string>
+    <string name="ingredients"><b><u>Ingredients</u></b></string>
+    <string name="title_activity_demo">Demo</string>
+
+</resources>
