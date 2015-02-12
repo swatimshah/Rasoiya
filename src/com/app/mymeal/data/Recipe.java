@@ -1,4 +1,4 @@
-package com.app.mymeal;
+package com.app.mymeal.data;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.util.StringTokenizer;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import com.app.mymeal.persistence.DataBaseHelper;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;

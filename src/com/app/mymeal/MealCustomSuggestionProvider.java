@@ -3,6 +3,9 @@ package com.app.mymeal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.app.mymeal.data.MealSuggestion;
+import com.app.mymeal.persistence.DataBaseHelper;
+
 import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -47,7 +50,7 @@ public class MealCustomSuggestionProvider extends ContentProvider {
 
 		// TODO Auto-generated method stub
 		String query = uri.getLastPathSegment();
-		Log.e("error: query: ", query);
+		Log.e("error", "CustomSuggestionProvider: query" + query);
 		if (SearchManager.SUGGEST_URI_PATH_QUERY.equals(query)) {
 
 			// user hasn't entered anything

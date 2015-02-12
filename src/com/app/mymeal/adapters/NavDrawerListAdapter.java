@@ -1,6 +1,11 @@
-package com.app.mymeal;
+package com.app.mymeal.adapters;
 
 import java.util.ArrayList;
+
+import com.app.mymeal.R;
+import com.app.mymeal.R.id;
+import com.app.mymeal.R.layout;
+import com.app.mymeal.views.NavDrawerItem;
 
 import android.app.Activity;
 import android.content.Context;

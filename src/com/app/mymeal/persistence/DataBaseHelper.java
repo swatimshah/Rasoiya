@@ -1,4 +1,4 @@
-package com.app.mymeal;
+package com.app.mymeal.persistence;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +14,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
+
+import com.app.mymeal.data.Meal;
+import com.app.mymeal.data.MealSuggestion;
+import com.app.mymeal.data.Recipe;
 
 import android.content.Context;
 import android.database.Cursor;

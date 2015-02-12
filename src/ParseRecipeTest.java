@@ -1,5 +1,5 @@
 import com.app.mymeal.R;
-import com.app.mymeal.Recipe;
+import com.app.mymeal.data.Recipe;
 
 import android.test.AndroidTestCase;
 

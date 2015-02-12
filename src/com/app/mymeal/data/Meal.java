@@ -1,4 +1,4 @@
-package com.app.mymeal;
+package com.app.mymeal.data;
 
 import java.util.ArrayList;
 

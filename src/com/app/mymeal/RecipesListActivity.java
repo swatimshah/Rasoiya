@@ -6,6 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.app.mymeal.adapters.NavDrawerListAdapter;
+import com.app.mymeal.data.Meal;
+import com.app.mymeal.persistence.DataBaseHelper;
+import com.app.mymeal.views.NavDrawerItem;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -173,7 +178,7 @@ public class RecipesListActivity extends Activity {
 
 	}
 
-	static class ViewHolder {
+	class ViewHolder {
 		TextView name;
 		TextView date;
 	}

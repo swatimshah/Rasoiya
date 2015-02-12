@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import com.app.mymeal.adapters.NavDrawerListAdapter;
+import com.app.mymeal.persistence.DataBaseHelper;
+import com.app.mymeal.views.NavDrawerItem;
+
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.widget.LinearLayout.LayoutParams;

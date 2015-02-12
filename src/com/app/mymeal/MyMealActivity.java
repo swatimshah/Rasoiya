@@ -7,6 +7,12 @@ import java.util.Calendar;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import com.app.mymeal.adapters.CalendarAdapter;
+import com.app.mymeal.adapters.NavDrawerListAdapter;
+import com.app.mymeal.data.Recipe;
+import com.app.mymeal.persistence.DataBaseHelper;
+import com.app.mymeal.views.NavDrawerItem;
+
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
