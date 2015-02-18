@@ -3,8 +3,6 @@ package com.app.mymeal.adapters;
 import java.util.ArrayList;
 
 import com.app.mymeal.R;
-import com.app.mymeal.R.id;
-import com.app.mymeal.R.layout;
 import com.app.mymeal.views.NavDrawerItem;
 
 import android.app.Activity;
@@ -14,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class NavDrawerListAdapter extends ArrayAdapter<NavDrawerItem> {

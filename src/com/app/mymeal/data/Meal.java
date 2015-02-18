@@ -1,7 +1,5 @@
 package com.app.mymeal.data;
 
-import java.util.ArrayList;
-
 public class Meal {
 
 	private String name = null;

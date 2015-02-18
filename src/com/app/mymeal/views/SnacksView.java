@@ -28,16 +28,11 @@ import com.app.mymeal.util.Utils;
 
 public class SnacksView implements MealViewInterface, OnClickListener {
 
-	Context context;
 	CommonView commonView;
-	MyCustomAdapter dataAdapter;
 
-	public SnacksView(Context context, CommonView commonView,
-			MyCustomAdapter dataAdapter) {
+	public SnacksView(CommonView commonView) {
 
-		this.context = context;
 		this.commonView = commonView;
-		this.dataAdapter = dataAdapter;
 	}
 
 	/**
@@ -50,20 +45,19 @@ public class SnacksView implements MealViewInterface, OnClickListener {
 
 	public void onAddButtonClick() {
 
-		EditText snacks = (EditText) ((Activity) context)
-				.findViewById(R.id.Snacks);
+		EditText snacks = commonView.getSnacks().getMeal();
 
 		String tempSnacksText = null;
 
-		Log.e("error",
-				"ConcatenatedMealItem: "
-						+ dataAdapter.getConcatAddedMealItems());
+		Log.e("error", "ConcatenatedMealItem: "
+				+ commonView.getDataAdapter().getConcatAddedMealItems());
 
-		if (dataAdapter.getConcatAddedMealItems() != null
-				&& !"".equals(dataAdapter.getConcatAddedMealItems().trim())) {
+		if (commonView.getDataAdapter().getConcatAddedMealItems() != null
+				&& !"".equals(commonView.getDataAdapter()
+						.getConcatAddedMealItems().trim())) {
 
-			tempSnacksText = (snacks.getText().toString().trim() + " " + dataAdapter
-					.getConcatAddedMealItems()).trim();
+			tempSnacksText = (snacks.getText().toString().trim() + " " + commonView
+					.getDataAdapter().getConcatAddedMealItems()).trim();
 
 		} else {
 
@@ -88,7 +82,8 @@ public class SnacksView implements MealViewInterface, OnClickListener {
 				mealItemList.add(tokenizer.nextToken());
 			}
 
-			ss = Utils.makeTagLinks(context, tempSnacksText, mealItemList);
+			ss = Utils.makeTagLinks(commonView.getContext(), tempSnacksText,
+					mealItemList);
 		} else {
 			ss = new SpannableStringBuilder("");
 		}
@@ -106,45 +101,38 @@ public class SnacksView implements MealViewInterface, OnClickListener {
 			}
 		});
 
-		SearchView searchView = (SearchView) ((Activity) context)
-				.findViewById(R.id.searchViewSnacks);
+		SearchView searchView = commonView.getSnacks().getSearchView();
 		searchView.setVisibility(View.GONE);
 
-		ListView listView = (ListView) ((Activity) context)
-				.findViewById(R.id.listView1Snacks);
+		ListView listView = commonView.getSnacks().getListView();
 		listView.setVisibility(View.GONE);
 
-		Button button = (Button) ((Activity) context)
-				.findViewById(R.id.lblAddSnacks);
+		Button button = commonView.getSnacks().getAddButton();
 		button.setVisibility(View.GONE);
 
-		Button clearButton = (Button) ((Activity) context)
-				.findViewById(R.id.lblClearSnacks);
+		Button clearButton = commonView.getSnacks().getClearButton();
 		clearButton.setVisibility(View.GONE);
 
-		commonView.getBreakfastSearch().setEnabled(true);
-		commonView.getBreakfastSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getLunchSearch().setEnabled(true);
-		commonView.getLunchSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getSnacksSearch().setEnabled(true);
-		commonView.getSnacksSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getDinnerSearch().setEnabled(true);
-		commonView.getDinnerSearch().setImageResource(
-				R.drawable.search_icon_small2);
+		commonView.getBreakfast().getSearch_meal_icon().setEnabled(true);
+		commonView.getBreakfast().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getLunch().getSearch_meal_icon().setEnabled(true);
+		commonView.getLunch().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getSnacks().getSearch_meal_icon().setEnabled(true);
+		commonView.getSnacks().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getDinner().getSearch_meal_icon().setEnabled(true);
+		commonView.getDinner().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
 
-		LinearLayout snacksLayout = (LinearLayout) ((Activity) context)
-				.findViewById(R.id.snacksLayout);
-		snacksLayout.setBackgroundColor(Color.TRANSPARENT);
+		commonView.getSnacks().setBackgroundColor(Color.TRANSPARENT);
 
 	}
 
 	public void onClearButtonClick() {
 
-		EditText snacks = (EditText) ((Activity) context)
-				.findViewById(R.id.Snacks);
+		EditText snacks = commonView.getSnacks().getMeal();
 
 		final SpannableString ss;
 
@@ -167,81 +155,68 @@ public class SnacksView implements MealViewInterface, OnClickListener {
 			}
 		});
 
-		SearchView searchView = (SearchView) ((Activity) context)
-				.findViewById(R.id.searchViewSnacks);
+		SearchView searchView = commonView.getSnacks().getSearchView();
 		searchView.setVisibility(View.GONE);
 
-		ListView listView = (ListView) ((Activity) context)
-				.findViewById(R.id.listView1Snacks);
+		ListView listView = commonView.getSnacks().getListView();
 		listView.setVisibility(View.GONE);
 
-		Button button = (Button) ((Activity) context)
-				.findViewById(R.id.lblAddSnacks);
+		Button button = commonView.getSnacks().getAddButton();
 		button.setVisibility(View.GONE);
 
-		Button clearButton = (Button) ((Activity) context)
-				.findViewById(R.id.lblClearSnacks);
+		Button clearButton = commonView.getSnacks().getClearButton();
 		clearButton.setVisibility(View.GONE);
 
-		commonView.getBreakfastSearch().setEnabled(true);
-		commonView.getBreakfastSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getLunchSearch().setEnabled(true);
-		commonView.getLunchSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getSnacksSearch().setEnabled(true);
-		commonView.getSnacksSearch().setImageResource(
-				R.drawable.search_icon_small2);
-		commonView.getDinnerSearch().setEnabled(true);
-		commonView.getDinnerSearch().setImageResource(
-				R.drawable.search_icon_small2);
+		commonView.getBreakfast().getSearch_meal_icon().setEnabled(true);
+		commonView.getBreakfast().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getLunch().getSearch_meal_icon().setEnabled(true);
+		commonView.getLunch().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getSnacks().getSearch_meal_icon().setEnabled(true);
+		commonView.getSnacks().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
+		commonView.getDinner().getSearch_meal_icon().setEnabled(true);
+		commonView.getDinner().getSearch_meal_icon()
+				.setImageResource(R.drawable.search_icon_small2);
 
-		LinearLayout snacksLayout = (LinearLayout) ((Activity) context)
-				.findViewById(R.id.snacksLayout);
-		snacksLayout.setBackgroundColor(Color.TRANSPARENT);
+		commonView.getSnacks().setBackgroundColor(Color.TRANSPARENT);
 
 	}
 
 	@Override
 	public void onClick(View v) {
 
-		SearchView searchView = (SearchView) ((Activity) context)
-				.findViewById(R.id.searchViewSnacks);
+		SearchView searchView = commonView.getSnacks().getSearchView();
 		searchView.setVisibility(View.VISIBLE);
 
-		ListView listView = (ListView) ((Activity) context)
-				.findViewById(R.id.listView1Snacks);
+		ListView listView = commonView.getSnacks().getListView();
 		listView.setVisibility(View.VISIBLE);
 
-		Button button = (Button) ((Activity) context)
-				.findViewById(R.id.lblAddSnacks);
+		Button button = commonView.getSnacks().getAddButton();
 		button.setVisibility(View.VISIBLE);
 
-		Button clearButton = (Button) ((Activity) context)
-				.findViewById(R.id.lblClearSnacks);
+		Button clearButton = commonView.getSnacks().getClearButton();
 		clearButton.setVisibility(View.VISIBLE);
 
 		commonView.setMealType("S");
-		commonView.setupSearchView("S", context);
-
-		commonView.clearListView("S", context, dataAdapter);
+		commonView.setupSearchView();
+		commonView.clearListView();
 		Log.e("error",
 				"ConcatenatedMealItem onClick: "
-						+ dataAdapter.getConcatAddedMealItems());
+						+ commonView.getDataAdapter().getConcatAddedMealItems());
 
-		commonView.getBreakfastSearch().setEnabled(false);
-		commonView.getBreakfastSearch().setImageResource(
+		commonView.getBreakfast().getSearch_meal_icon().setEnabled(false);
+		commonView.getBreakfast().getSearch_meal_icon().setImageResource(
 				R.drawable.search_icon_small2_disabled);
-		commonView.getLunchSearch().setEnabled(false);
-		commonView.getLunchSearch().setImageResource(
+		commonView.getLunch().getSearch_meal_icon().setEnabled(false);
+		commonView.getLunch().getSearch_meal_icon().setImageResource(
 				R.drawable.search_icon_small2_disabled);
-		commonView.getDinnerSearch().setEnabled(false);
-		commonView.getDinnerSearch().setImageResource(
+		commonView.getDinner().getSearch_meal_icon().setEnabled(false);
+		commonView.getDinner().getSearch_meal_icon().setImageResource(
 				R.drawable.search_icon_small2_disabled);
 
-		LinearLayout snacksLayout = (LinearLayout) ((Activity) context)
-				.findViewById(R.id.snacksLayout);
-		snacksLayout.setBackgroundColor(Color.rgb(255, 239, 213));
+		commonView.getSnacks().setBackgroundColor(Color.rgb(255, 239, 213));
 
 	}
 

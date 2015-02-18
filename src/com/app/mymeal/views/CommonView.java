@@ -2,7 +2,6 @@ package com.app.mymeal.views;
 
 import java.util.StringTokenizer;
 
-import com.app.mymeal.R;
 import com.app.mymeal.adapters.MyCustomAdapter;
 
 import android.app.Activity;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -22,12 +20,44 @@ import android.widget.TextView;
 
 public class CommonView {
 
-	private ImageView breakfastSearch;
-	private ImageView lunchSearch;
-	private ImageView snacksSearch;
-	private ImageView dinnerSearch;
+	private MealView breakfast;
+	private MealView lunch;
+	private MealView snacks;
+	private MealView dinner;
 	private SearchView selectedSearchView;
 	private String mealType;
+	private Context context;
+	private MyCustomAdapter dataAdapter;
+
+	public CommonView(Context context, MyCustomAdapter dataAdapter) {
+		this.context = context;
+		this.dataAdapter = dataAdapter;
+	}
+		
+	
+	public Context getContext() {
+		return context;
+	}
+
+
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+
+
+	public MyCustomAdapter getDataAdapter() {
+		return dataAdapter;
+	}
+
+
+
+	public void setDataAdapter(MyCustomAdapter dataAdapter) {
+		this.dataAdapter = dataAdapter;
+	}
+
+
 
 	public String getMealType() {
 		return mealType;
@@ -35,6 +65,38 @@ public class CommonView {
 
 	public void setMealType(String mealType) {
 		this.mealType = mealType;
+	}
+
+	public MealView getBreakfast() {
+		return breakfast;
+	}
+
+	public void setBreakfast(MealView breakfast) {
+		this.breakfast = breakfast;
+	}
+
+	public MealView getLunch() {
+		return lunch;
+	}
+
+	public void setLunch(MealView lunch) {
+		this.lunch = lunch;
+	}
+
+	public MealView getSnacks() {
+		return snacks;
+	}
+
+	public void setSnacks(MealView snacks) {
+		this.snacks = snacks;
+	}
+
+	public MealView getDinner() {
+		return dinner;
+	}
+
+	public void setDinner(MealView dinner) {
+		this.dinner = dinner;
 	}
 
 	public SearchView getSelectedSearchView() {
@@ -45,38 +107,6 @@ public class CommonView {
 		this.selectedSearchView = selectedSearchView;
 	}
 
-	public ImageView getBreakfastSearch() {
-		return breakfastSearch;
-	}
-
-	public void setBreakfastSearch(ImageView breakfastSearch) {
-		this.breakfastSearch = breakfastSearch;
-	}
-
-	public ImageView getLunchSearch() {
-		return lunchSearch;
-	}
-
-	public void setLunchSearch(ImageView lunchSearch) {
-		this.lunchSearch = lunchSearch;
-	}
-
-	public ImageView getSnacksSearch() {
-		return snacksSearch;
-	}
-
-	public void setSnacksSearch(ImageView snacksSearch) {
-		this.snacksSearch = snacksSearch;
-	}
-
-	public ImageView getDinnerSearch() {
-		return dinnerSearch;
-	}
-
-	public void setDinnerSearch(ImageView dinnerSearch) {
-		this.dinnerSearch = dinnerSearch;
-	}
-
 	/**
 	 * @param args
 	 */
@@ -85,25 +115,21 @@ public class CommonView {
 
 	}
 
-	public void setupSearchView(String aMealType, Context context) {
+	public void setupSearchView() {
 		SearchManager searchManager = (SearchManager) ((Activity) context)
 				.getSystemService(Context.SEARCH_SERVICE);
 		SearchView searchView = null;
-		if ("B".equals(aMealType)) {
-			searchView = (SearchView) ((Activity) context)
-					.findViewById(R.id.searchView);
+		if ("B".equals(mealType)) {
+			searchView = breakfast.getSearchView();
 		}
-		if ("L".equals(aMealType)) {
-			searchView = (SearchView) ((Activity) context)
-					.findViewById(R.id.searchViewLunch);
+		if ("L".equals(mealType)) {
+			searchView = lunch.getSearchView();
 		}
-		if ("S".equals(aMealType)) {
-			searchView = (SearchView) ((Activity) context)
-					.findViewById(R.id.searchViewSnacks);
+		if ("S".equals(mealType)) {
+			searchView = snacks.getSearchView();
 		}
-		if ("D".equals(aMealType)) {
-			searchView = (SearchView) ((Activity) context)
-					.findViewById(R.id.searchViewDinner);
+		if ("D".equals(mealType)) {
+			searchView = dinner.getSearchView();
 		}
 
 		SearchableInfo searchableInfo = searchManager
@@ -144,31 +170,26 @@ public class CommonView {
 		return validQuery.trim();
 	}
 
-	public void clearListView(String aMealType, Context context,
-			final MyCustomAdapter dataAdapter) {
+	public void clearListView() {
 
 		Log.e("error", "Clear listview");
 		
 		ListView listView = null;
 
-		if ("B".equals(aMealType)) {
-			listView = (ListView) ((Activity) context)
-					.findViewById(R.id.listView1);
+		if ("B".equals(mealType)) {
+			listView = breakfast.getListView();
 		}
 
-		if ("L".equals(aMealType)) {
-			listView = (ListView) ((Activity) context)
-					.findViewById(R.id.listView1Lunch);
+		if ("L".equals(mealType)) {
+			listView = lunch.getListView();
 		}
 
-		if ("S".equals(aMealType)) {
-			listView = (ListView) ((Activity) context)
-					.findViewById(R.id.listView1Snacks);
+		if ("S".equals(mealType)) {
+			listView = snacks.getListView();
 		}
 
-		if ("D".equals(aMealType)) {
-			listView = (ListView) ((Activity) context)
-					.findViewById(R.id.listView1Dinner);
+		if ("D".equals(mealType)) {
+			listView = dinner.getListView();
 		}
 
 		// Assign adapter to ListView

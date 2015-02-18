@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.app.mymeal.R;
-import com.app.mymeal.R.drawable;
-import com.app.mymeal.R.id;
-import com.app.mymeal.R.layout;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -12,6 +12,7 @@ import com.app.mymeal.views.BreakfastView;
 import com.app.mymeal.views.CommonView;
 import com.app.mymeal.views.DinnerView;
 import com.app.mymeal.views.LunchView;
+import com.app.mymeal.views.MealView;
 import com.app.mymeal.views.MealViewInterface;
 import com.app.mymeal.views.NavMenuView;
 import com.app.mymeal.views.SnacksView;
@@ -34,9 +35,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
@@ -46,6 +45,10 @@ public class MealEditActivity extends Activity {
 	MyCustomAdapter dataAdapter = null;
 	static String mDate = "";
 	CommonView commonView = null;
+	MealView breakfast = null;
+	MealView lunch = null;
+	MealView snacks = null;
+	MealView dinner = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,32 +57,33 @@ public class MealEditActivity extends Activity {
 
 		Log.e("error", "onCreate");
 
-		onNewIntent(getIntent());
+		breakfast = (MealView) findViewById(R.id.breakfastLayout);
+		lunch = (MealView) findViewById(R.id.lunchLayout);
+		snacks = (MealView) findViewById(R.id.snacksLayout);
+		dinner = (MealView) findViewById(R.id.dinnerLayout);
 
-		commonView = new CommonView();
-		commonView
-				.setBreakfastSearch((ImageView) findViewById(R.id.search_breakfast_icon));
-		commonView
-				.setLunchSearch((ImageView) findViewById(R.id.search_lunch_icon));
-		commonView
-				.setSnacksSearch((ImageView) findViewById(R.id.search_snacks_icon));
-		commonView
-				.setDinnerSearch((ImageView) findViewById(R.id.search_dinner_icon));
+		onNewIntent(getIntent());
 
 		ArrayList<Meal> mealList = new ArrayList<Meal>();
 		dataAdapter = new MyCustomAdapter(this, R.layout.meal_list, mealList);
 
-		commonView.getBreakfastSearch().setOnClickListener(
-				new BreakfastView(this, commonView, dataAdapter));
+		commonView = new CommonView(this, dataAdapter);
+		commonView.setBreakfast(breakfast);
+		commonView.setLunch(lunch);
+		commonView.setSnacks(snacks);
+		commonView.setDinner(dinner);
 
-		commonView.getLunchSearch().setOnClickListener(
-				new LunchView(this, commonView, dataAdapter));
+		commonView.getBreakfast().getSearch_meal_icon()
+				.setOnClickListener(new BreakfastView(commonView));
 
-		commonView.getSnacksSearch().setOnClickListener(
-				new SnacksView(this, commonView, dataAdapter));
+		commonView.getLunch().getSearch_meal_icon()
+				.setOnClickListener(new LunchView(commonView));
 
-		commonView.getDinnerSearch().setOnClickListener(
-				new DinnerView(this, commonView, dataAdapter));
+		commonView.getSnacks().getSearch_meal_icon()
+				.setOnClickListener(new SnacksView(commonView));
+
+		commonView.getDinner().getSearch_meal_icon()
+				.setOnClickListener(new DinnerView(commonView));
 
 		NavMenuView navMenu = new NavMenuView(this);
 		navMenu.displayNavMenu();
@@ -96,21 +100,17 @@ public class MealEditActivity extends Activity {
 
 		myDbHelper.deleteMeal(mealDate);
 
-		TextView breakFast = (TextView) findViewById(R.id.Breakfast);
-		String breakfastMeal = breakFast.getText().toString();
-		myDbHelper.saveMeal(mealDate, "B", breakfastMeal);
+		myDbHelper.saveMeal(mealDate, "B", breakfast.getMeal().getText()
+				.toString());
 
-		TextView lunch = (TextView) findViewById(R.id.Lunch);
-		String lunchMeal = lunch.getText().toString();
-		myDbHelper.saveMeal(mealDate, "L", lunchMeal);
+		myDbHelper
+				.saveMeal(mealDate, "L", lunch.getMeal().getText().toString());
 
-		TextView snacks = (TextView) findViewById(R.id.Snacks);
-		String snacksMeal = snacks.getText().toString();
-		myDbHelper.saveMeal(mealDate, "S", snacksMeal);
+		myDbHelper.saveMeal(mealDate, "S", snacks.getMeal().getText()
+				.toString());
 
-		TextView dinner = (TextView) findViewById(R.id.Dinner);
-		String dinnerMeal = dinner.getText().toString();
-		myDbHelper.saveMeal(mealDate, "D", dinnerMeal);
+		myDbHelper.saveMeal(mealDate, "D", dinner.getMeal().getText()
+				.toString());
 
 		Toast.makeText(this, "The meal saved successfully.", Toast.LENGTH_SHORT)
 				.show();
@@ -138,7 +138,7 @@ public class MealEditActivity extends Activity {
 			myDbHelper = new DataBaseHelper(this);
 			myDbHelper.openDataBase();
 
-			EditText breakfast = (EditText) findViewById(R.id.Breakfast);
+			EditText myBreakfast = (EditText) breakfast.getMeal();
 
 			String tempBreakfastText = myDbHelper.searchMeal(mDate, "B").trim();
 
@@ -160,9 +160,9 @@ public class MealEditActivity extends Activity {
 				ss = new SpannableStringBuilder("");
 			}
 
-			breakfast.setText(ss);
-			breakfast.setMovementMethod(LinkMovementMethod.getInstance());
-			breakfast.setOnTouchListener(new OnTouchListener() {
+			myBreakfast.setText(ss);
+			myBreakfast.setMovementMethod(LinkMovementMethod.getInstance());
+			myBreakfast.setOnTouchListener(new OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					Log.e("error",
@@ -175,7 +175,7 @@ public class MealEditActivity extends Activity {
 				}
 			});
 
-			EditText lunch = (EditText) findViewById(R.id.Lunch);
+			EditText myLunch = (EditText) lunch.getMeal();
 
 			String tempLunchText = myDbHelper.searchMeal(mDate, "L").trim();
 
@@ -197,9 +197,9 @@ public class MealEditActivity extends Activity {
 				ssLunch = new SpannableStringBuilder("");
 			}
 
-			lunch.setText(ssLunch);
-			lunch.setMovementMethod(LinkMovementMethod.getInstance());
-			lunch.setOnTouchListener(new OnTouchListener() {
+			myLunch.setText(ssLunch);
+			myLunch.setMovementMethod(LinkMovementMethod.getInstance());
+			myLunch.setOnTouchListener(new OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 
@@ -211,7 +211,7 @@ public class MealEditActivity extends Activity {
 				}
 			});
 
-			EditText snacks = (EditText) findViewById(R.id.Snacks);
+			EditText mySnacks = snacks.getMeal();
 
 			String tempSnacksText = myDbHelper.searchMeal(mDate, "S").trim();
 
@@ -233,9 +233,9 @@ public class MealEditActivity extends Activity {
 				ssSnacks = new SpannableStringBuilder("");
 			}
 
-			snacks.setText(ssSnacks);
-			snacks.setMovementMethod(LinkMovementMethod.getInstance());
-			snacks.setOnTouchListener(new OnTouchListener() {
+			mySnacks.setText(ssSnacks);
+			mySnacks.setMovementMethod(LinkMovementMethod.getInstance());
+			mySnacks.setOnTouchListener(new OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					Log.e("error", "onTouch is getting called..");
@@ -246,7 +246,7 @@ public class MealEditActivity extends Activity {
 				}
 			});
 
-			EditText dinner = (EditText) findViewById(R.id.Dinner);
+			EditText myDinner = dinner.getMeal();
 
 			String tempDinnerText = myDbHelper.searchMeal(mDate, "D").trim();
 
@@ -269,9 +269,9 @@ public class MealEditActivity extends Activity {
 				ssDinner = new SpannableStringBuilder("");
 			}
 
-			dinner.setText(ssDinner);
-			dinner.setMovementMethod(LinkMovementMethod.getInstance());
-			dinner.setOnTouchListener(new OnTouchListener() {
+			myDinner.setText(ssDinner);
+			myDinner.setMovementMethod(LinkMovementMethod.getInstance());
+			myDinner.setOnTouchListener(new OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					Log.e("error", "onTouch is getting called..");
@@ -287,16 +287,16 @@ public class MealEditActivity extends Activity {
 			Log.e("error: ", "action : " + Intent.ACTION_SEARCH);
 			Log.e("error: ", "Planned Date in ACTION_SEARCH: " + mDate);
 			String query = intent.getStringExtra(SearchManager.QUERY);
-			String aMealType = intent.getStringExtra("mealType");
+			// String aMealType = intent.getStringExtra("mealType");
 			if (query == null || "".equals(query.trim())) {
 				ArrayList<Meal> mealItemList = new ArrayList<Meal>();
 				dataAdapter.setMealList(mealItemList);
-				displayListView(aMealType);
+				displayListView();
 			} else {
 				dataAdapter.clear();
 				ArrayList<Meal> mealItemList = doMySearch(query.trim());
 				dataAdapter.setMealList(mealItemList);
-				displayListView(aMealType);
+				displayListView();
 			}
 
 		}
@@ -311,24 +311,24 @@ public class MealEditActivity extends Activity {
 		return myDbHelper.search(query, mDate);
 	}
 
-	private void displayListView(String aMealType) {
+	private void displayListView() {
 
 		ListView listView = null;
 
-		if ("B".equals(aMealType)) {
-			listView = (ListView) findViewById(R.id.listView1);
+		if ("B".equals(commonView.getMealType())) {
+			listView = breakfast.getListView();
 		}
 
-		if ("L".equals(aMealType)) {
-			listView = (ListView) findViewById(R.id.listView1Lunch);
+		if ("L".equals(commonView.getMealType())) {
+			listView = lunch.getListView();
 		}
 
-		if ("S".equals(aMealType)) {
-			listView = (ListView) findViewById(R.id.listView1Snacks);
+		if ("S".equals(commonView.getMealType())) {
+			listView = snacks.getListView();
 		}
 
-		if ("D".equals(aMealType)) {
-			listView = (ListView) findViewById(R.id.listView1Dinner);
+		if ("D".equals(commonView.getMealType())) {
+			listView = dinner.getListView();
 		}
 
 		listView.setOnTouchListener(new OnTouchListener() {
@@ -364,23 +364,23 @@ public class MealEditActivity extends Activity {
 
 	}
 
-	@Override
-	public void startActivity(Intent intent) {
-		// check if search intent
-		if (Intent.ACTION_SEARCH.equals(intent.getAction())
-				|| Intent.ACTION_VIEW.equals(intent.getAction())) {
-			if ("B".equals(commonView.getMealType()))
-				intent.putExtra("mealType", "B");
-			if ("L".equals(commonView.getMealType()))
-				intent.putExtra("mealType", "L");
-			if ("S".equals(commonView.getMealType()))
-				intent.putExtra("mealType", "S");
-			if ("D".equals(commonView.getMealType()))
-				intent.putExtra("mealType", "D");
-		}
-
-		super.startActivity(intent);
-	}
+	// @Override
+	// public void startActivity(Intent intent) {
+	// // check if search intent
+	// if (Intent.ACTION_SEARCH.equals(intent.getAction())
+	// || Intent.ACTION_VIEW.equals(intent.getAction())) {
+	// if ("B".equals(commonView.getMealType()))
+	// intent.putExtra("mealType", "B");
+	// if ("L".equals(commonView.getMealType()))
+	// intent.putExtra("mealType", "L");
+	// if ("S".equals(commonView.getMealType()))
+	// intent.putExtra("mealType", "S");
+	// if ("D".equals(commonView.getMealType()))
+	// intent.putExtra("mealType", "D");
+	// }
+	//
+	// super.startActivity(intent);
+	// }
 
 	@Override
 	protected void onResume() {
@@ -461,51 +461,50 @@ public class MealEditActivity extends Activity {
 	}
 
 	public void onAddButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Breakfast", this, commonView, dataAdapter);
-		mealView.onAddButtonClick();
-	}
-
-	public void onAddLunchButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Lunch", this, commonView, dataAdapter);
-		mealView.onAddButtonClick();
-	}
-
-	public void onAddSnacksButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Snacks", this, commonView, dataAdapter);
-		mealView.onAddButtonClick();
-	}
-
-	public void onAddDinnerButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Dinner", this, commonView, dataAdapter);
-		mealView.onAddButtonClick();
+		if ("B".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Breakfast", commonView);
+			mealView.onAddButtonClick();
+		}
+		if ("L".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Lunch", commonView);
+			mealView.onAddButtonClick();
+		}
+		if ("S".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Snacks", commonView);
+			mealView.onAddButtonClick();
+		}
+		if ("D".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Dinner", commonView);
+			mealView.onAddButtonClick();
+		}
 	}
 
 	public void onClearButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Breakfast", this, commonView, dataAdapter);
-		mealView.onClearButtonClick();
-	}
+		if ("B".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Breakfast", commonView);
+			mealView.onClearButtonClick();
+		}
+		if ("L".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Lunch", commonView);
+			mealView.onClearButtonClick();
+		}
+		if ("S".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Snacks", commonView);
+			mealView.onClearButtonClick();
+		}
+		if ("D".equals(commonView.getMealType())) {
+			MealViewInterface mealView = ViewFactory.getViewFactory()
+					.getMealView("Dinner", commonView);
+			mealView.onClearButtonClick();
+		}
 
-	public void onClearLunchButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Lunch", this, commonView, dataAdapter);
-		mealView.onClearButtonClick();
-	}
-
-	public void onClearSnacksButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Snacks", this, commonView, dataAdapter);
-		mealView.onClearButtonClick();
-	}
-
-	public void onClearDinnerButtonClick(View view) {
-		MealViewInterface mealView = ViewFactory.getViewFactory().getMealView(
-				"Dinner", this, commonView, dataAdapter);
-		mealView.onClearButtonClick();
 	}
 
 	@Override

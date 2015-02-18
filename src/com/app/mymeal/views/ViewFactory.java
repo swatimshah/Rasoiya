@@ -1,9 +1,5 @@
 package com.app.mymeal.views;
 
-import android.content.Context;
-
-import com.app.mymeal.adapters.MyCustomAdapter;
-
 public class ViewFactory {
 
 	public static ViewFactory viewFactory = null;
@@ -22,16 +18,16 @@ public class ViewFactory {
 	}
 	
 	
-	public MealViewInterface getMealView(String viewName, Context context, CommonView commonView, MyCustomAdapter dataAdapter) {
+	public MealViewInterface getMealView(String viewName, CommonView commonView) {
 		
 		if("Breakfast".equals(viewName))
-			return new BreakfastView(context, commonView, dataAdapter);
+			return new BreakfastView(commonView);
 		else if ("Lunch".equals(viewName))
-			return new LunchView(context, commonView, dataAdapter);
+			return new LunchView(commonView);
 		else if ("Snacks".equals(viewName))
-			return new SnacksView(context, commonView, dataAdapter);
+			return new SnacksView(commonView);
 		else if ("Dinner".equals(viewName))
-			return new DinnerView(context, commonView, dataAdapter);
+			return new DinnerView(commonView);
 		else 
 			return null;
 	}

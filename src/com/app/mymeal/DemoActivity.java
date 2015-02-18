@@ -2,8 +2,6 @@ package com.app.mymeal;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebView;
 
 public class DemoActivity extends Activity {

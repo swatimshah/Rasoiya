@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import com.app.mymeal.R;
 import com.app.mymeal.RecipeEditActivity;
-import com.app.mymeal.R.id;
-import com.app.mymeal.R.layout;
 import com.app.mymeal.data.Meal;
 
 import android.app.Activity;

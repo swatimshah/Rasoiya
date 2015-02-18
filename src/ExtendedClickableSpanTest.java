@@ -1,7 +1,6 @@
 import com.app.mymeal.MainActivity;
 import com.app.mymeal.views.ExtendedClickableSpan;
 
-import android.graphics.Typeface;
 import android.test.ActivityInstrumentationTestCase2;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -46,12 +45,6 @@ public class ExtendedClickableSpanTest extends
 
 		extendedClickableSpan.onClick(editText);
 	}
-
-	// public void testCase2() throws Exception {
-	//
-	// ExtendedClickableSpan extendedClickableSpan = ExtendedClickableSpan
-	// .getComponent(getContext(), new SpannableString("Dum Aloo"));
-	// }
 
 	@Override
 	protected void tearDown() throws Exception {

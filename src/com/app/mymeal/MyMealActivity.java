@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.XmlResourceParser;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -34,10 +33,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -90,7 +87,7 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 
 		/** Create an array adapter to populate dropdownlist */
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-				getActionBar().getThemedContext(),
+				getActionBar().getThemedContext(), 
 				android.R.layout.simple_list_item_1, android.R.id.text1, meal);
 
 		// ArrayAdapter<String> arrayAdapter = ArrayAdapter.createFromResource(

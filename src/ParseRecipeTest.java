@@ -1,15 +1,9 @@
-import com.app.mymeal.R;
 import com.app.mymeal.data.Recipe;
 
 import android.test.AndroidTestCase;
 
 
 public class ParseRecipeTest extends AndroidTestCase {
-
-//	public ParseRecipeTest(Class<Application> applicationClass) {
-//		super(applicationClass);
-//		// TODO Auto-generated constructor stub
-//	}
 
 	public void testPopulateRecipe() throws Exception {
 		int resource = getContext().getResources().getIdentifier("jeerarice_import", 
