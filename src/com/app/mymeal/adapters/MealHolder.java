@@ -3,7 +3,7 @@ package com.app.mymeal.adapters;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class ViewHolder {
+public class MealHolder {
 
 	public CheckBox checkBox;
 	public TextView name;

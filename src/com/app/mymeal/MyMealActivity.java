@@ -8,10 +8,9 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.app.mymeal.adapters.CalendarAdapter;
-import com.app.mymeal.adapters.NavDrawerListAdapter;
 import com.app.mymeal.data.Recipe;
 import com.app.mymeal.persistence.DataBaseHelper;
-import com.app.mymeal.views.NavDrawerItem;
+import com.app.mymeal.views.NavMenuView;
 
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
@@ -23,8 +22,6 @@ import android.content.res.Configuration;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -62,15 +59,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 	String[] meal = new String[] { "This Month", "Coming 3 weeks",
 			"Coming 2 weeks", "Coming week" };
 
-	// slide menu items
-	private String[] navMenuTitles;
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private ArrayList<NavDrawerItem> navDrawerItems;
-	private NavDrawerListAdapter navAdapter;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private CharSequence mDrawerTitle;
-	private CharSequence mTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,25 +66,12 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 		gestureScanner = new GestureDetector(this, this);
 		setContentView(R.layout.my_meal);
 
-		// mDrawerLayout.setDrawerListener(mDrawerToggle);
-		//
-		// if (savedInstanceState == null) {
-		// // on first time display view for first nav item
-		// displayView(0);
-		// }
 
 		/** Create an array adapter to populate dropdownlist */
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 				getActionBar().getThemedContext(), 
 				android.R.layout.simple_list_item_1, android.R.id.text1, meal);
 
-		// ArrayAdapter<String> arrayAdapter = ArrayAdapter.createFromResource(
-		// getActionBar().getThemedContext(), R.array.action_list,
-		// android.R.layout.simple_spinner_dropdown_item);
-
-		/** Enabling dropdown list navigation for the action bar */
-		// getActionBar().setDisplayShowTitleEnabled(false);
-		// getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
 		/** Defining Navigation listener */
 		ActionBar.OnNavigationListener navigationListener = new OnNavigationListener() {
@@ -111,28 +86,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 			}
 		};
 
-		/**
-		 * Setting dropdown items and item navigation listener for the actionbar
-		 */
-		// getActionBar().setListNavigationCallbacks(arrayAdapter,
-		// navigationListener);
-
-		// start - Put a help button in action bar
-		// WebView webView = new WebView(this);
-		// webView.getSettings().setJavaScriptEnabled(true);
-		// String urlDemo = "http://www.appdemostore.com/m/5995841235976192";
-		// webView.loadUrl(urlDemo);
-		//
-		// Button demoButton = new Button(this);
-		// demoButton.setText("Demo");
-		// demoButton.setBackgroundColor(Color.WHITE);
-		// demoButton.setTextColor(Color.BLACK);
-		//
-		// demoButton.setOnClickListener(demoButtonListener);
-		//
-		// getActionBar().setCustomView(demoButton);
-		// getActionBar().setDisplayShowCustomEnabled(true);
-		// end - put a help button in action bar
 
 		myCalendar = Calendar.getInstance();
 		adapter = new CalendarAdapter(this, myCalendar);
@@ -198,11 +151,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 					if (image instanceof ImageView
 							&& image.getVisibility() == image.VISIBLE) {
 
-//						Toast.makeText(
-//								getApplicationContext(),
-//								android.text.format.DateFormat.format(
-//										"yyyy-MM", myCalendar) + "-" + day,
-//								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent(v.getContext(),
 								MealEditActivity.class);
@@ -217,11 +165,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 						startActivity(intent);
 
 					} else {
-//						Toast.makeText(
-//								getApplicationContext(),
-//								android.text.format.DateFormat.format(
-//										"yyyy-MM", myCalendar) + "-" + day,
-//								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent(v.getContext(),
 								MealEditActivity.class);
@@ -245,27 +188,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 		});
 
 		gridview.setOnTouchListener(new View.OnTouchListener() {
-			// @Override
-			// public boolean onTouch(View view, MotionEvent event)
-			// {
-			// float X = event.getX();
-			// float Y = event.getY();
-			//
-			// switch (event.getAction()) {
-			// case MotionEvent.ACTION_DOWN:
-			// Log.e("error", "Down: " + X + "," + Y);
-			// break;
-			// case MotionEvent.ACTION_MOVE:
-			// Log.e("error", "Move: " + X + "," + Y);
-			// break;
-			// case MotionEvent.ACTION_UP:
-			// Log.e("error", "Up: " + X + "," + Y);
-			// break;
-			// } }
-			// return true;
-			// public boolean onTouch(View v, MotionEvent me) {
-			// return gestureScanner.onTouchEvent(me);
-			// }
 
 			public boolean onTouch(View v, MotionEvent me) {
 				gestureScanner.onTouchEvent(me);
@@ -307,62 +229,8 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 			// this is the case other than first run
 		}
 
-		// load slide menu items
-		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-		navDrawerItems = new ArrayList<NavDrawerItem>();
-
-		// adding nav drawer items to array
-		// Home
-		Log.e("error", "menu item: " + navMenuTitles[0]);
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0]));
-		// Recipes
-		Log.e("error", "menu item: " + navMenuTitles[1]);
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
-
-		// setting the nav drawer list adapter
-		navAdapter = new NavDrawerListAdapter(this, R.layout.drawer_list_item,
-				navDrawerItems);
-		mDrawerList.setAdapter(navAdapter);
-
-		mDrawerList.bringToFront();
-
-		mDrawerLayout.requestLayout();
-
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-		mTitle = mDrawerTitle = getTitle();
-
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, // nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for
-				// accessibility
-				R.string.app_name // nav drawer close - description for
-		// accessibility
-		) {
-			public void onDrawerClosed(View view) {
-				Log.e("error", "onDrawerClosed");
-				getActionBar().setTitle(mTitle);
-				// calling onPrepareOptionsMenu() to show action bar icons
-				invalidateOptionsMenu();
-			}
-
-			public void onDrawerOpened(View drawerView) {
-				Log.e("error", "onDrawerOpened");
-				getActionBar().setTitle(mDrawerTitle);
-				// calling onPrepareOptionsMenu() to hide action bar icons
-				invalidateOptionsMenu();
-			}
-		};
-
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		// enabling action bar app icon and behaving it as toggle button
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		NavMenuView navMenu = new NavMenuView(this);
+		navMenu.displayNavMenu();
 
 	}
 
@@ -427,13 +295,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 			items = myDbHelper.getCalendarItemsWithMealEntry(firstDayOfMonth,
 					lastDayOfMonth);
 
-			// for (int i = 0; i < 31; i++) {
-			// Random r = new Random();
-			//
-			// if (r.nextInt(10) > 6) {
-			// items.add(Integer.toString(i));
-			// }
-			// }
 
 			adapter.setItems(items);
 			adapter.notifyDataSetChanged();
@@ -551,13 +412,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 				getActionBar().getThemedContext(),
 				android.R.layout.simple_list_item_1, android.R.id.text1, meal);
 
-		// ArrayAdapter<String> arrayAdapter = ArrayAdapter.createFromResource(
-		// getActionBar().getThemedContext(), R.array.action_list,
-		// android.R.layout.simple_spinner_dropdown_item);
-
-		/** Enabling dropdown list navigation for the action bar */
-		// getActionBar().setDisplayShowTitleEnabled(false);
-		// getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
 		/** Defining Navigation listener */
 		ActionBar.OnNavigationListener navigationListener = new OnNavigationListener() {
@@ -572,21 +426,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 			}
 		};
 
-		/**
-		 * Setting dropdown items and item navigation listener for the actionbar
-		 */
-		// getActionBar().setListNavigationCallbacks(arrayAdapter,
-		// navigationListener);
-
-		// start - Put a help button in action bar
-		// getActionBar().set
-
-		// WebView webView = new WebView(this);
-		// webView.getSettings().setJavaScriptEnabled(true);
-		// String urlDemo = "http://www.appdemostore.com/m/5995841235976192";
-		// webView.loadUrl(urlDemo);
-
-		// end - put a help button in action bar
 
 		myCalendar = Calendar.getInstance();
 		adapter = new CalendarAdapter(this, myCalendar);
@@ -652,11 +491,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 					if (image instanceof ImageView
 							&& image.getVisibility() == image.VISIBLE) {
 
-//						Toast.makeText(
-//								getApplicationContext(),
-//								android.text.format.DateFormat.format(
-//										"yyyy-MM", myCalendar) + "-" + day,
-//								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent(v.getContext(),
 								MealEditActivity.class);
@@ -671,11 +505,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 						startActivity(intent);
 
 					} else {
-//						Toast.makeText(
-//								getApplicationContext(),
-//								android.text.format.DateFormat.format(
-//										"yyyy-MM", myCalendar) + "-" + day,
-//								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent(v.getContext(),
 								MealEditActivity.class);
@@ -699,27 +528,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 		});
 
 		gridview.setOnTouchListener(new View.OnTouchListener() {
-			// @Override
-			// public boolean onTouch(View view, MotionEvent event)
-			// {
-			// float X = event.getX();
-			// float Y = event.getY();
-			//
-			// switch (event.getAction()) {
-			// case MotionEvent.ACTION_DOWN:
-			// Log.e("error", "Down: " + X + "," + Y);
-			// break;
-			// case MotionEvent.ACTION_MOVE:
-			// Log.e("error", "Move: " + X + "," + Y);
-			// break;
-			// case MotionEvent.ACTION_UP:
-			// Log.e("error", "Up: " + X + "," + Y);
-			// break;
-			// } }
-			// return true;
-			// public boolean onTouch(View v, MotionEvent me) {
-			// return gestureScanner.onTouchEvent(me);
-			// }
 
 			public boolean onTouch(View v, MotionEvent me) {
 				gestureScanner.onTouchEvent(me);
@@ -759,62 +567,8 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 			// this is the case other than first run
 		}
 
-		// load slide menu items
-		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-		navDrawerItems = new ArrayList<NavDrawerItem>();
-
-		// adding nav drawer items to array
-		// Home
-		Log.e("error", "menu item: " + navMenuTitles[0]);
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0]));
-		// Recipes
-		Log.e("error", "menu item: " + navMenuTitles[1]);
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
-
-		// setting the nav drawer list adapter
-		navAdapter = new NavDrawerListAdapter(this, R.layout.drawer_list_item,
-				navDrawerItems);
-		mDrawerList.setAdapter(navAdapter);
-
-		mDrawerList.bringToFront();
-
-		mDrawerLayout.requestLayout();
-
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-		mTitle = mDrawerTitle = getTitle();
-
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, // nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for
-				// accessibility
-				R.string.app_name // nav drawer close - description for
-		// accessibility
-		) {
-			public void onDrawerClosed(View view) {
-				Log.e("error", "onDrawerClosed");
-				getActionBar().setTitle(mTitle);
-				// calling onPrepareOptionsMenu() to show action bar icons
-				invalidateOptionsMenu();
-			}
-
-			public void onDrawerOpened(View drawerView) {
-				Log.e("error", "onDrawerOpened");
-				getActionBar().setTitle(mDrawerTitle);
-				// calling onPrepareOptionsMenu() to hide action bar icons
-				invalidateOptionsMenu();
-			}
-		};
-
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		// enabling action bar app icon and behaving it as toggle button
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		NavMenuView navMenu = new NavMenuView(this);
+		navMenu.displayNavMenu();
 
 	}
 
@@ -877,8 +631,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 
 		switch (position) {
 		case 0:
-//			Toast.makeText(getApplicationContext(),
-//					"You selected : " + "[Home] ", Toast.LENGTH_SHORT).show();
 
 			Intent intentHome = new Intent(getApplicationContext(),
 					MyMealActivity.class);
@@ -886,9 +638,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 
 			break;
 		case 1:
-//			Toast.makeText(getApplicationContext(),
-//					"You selected : " + "[Recipes] ", Toast.LENGTH_SHORT)
-//					.show();
 			Intent intentRecipe = new Intent(getApplicationContext(),
 					RecipesListActivity.class);
 			startActivity(intentRecipe);
@@ -898,12 +647,6 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 		}
 	}
 
-	@Override
-	public void setTitle(CharSequence title) {
-		Log.e("error", "setTitle");
-		mTitle = title;
-		getActionBar().setTitle(mTitle);
-	}
 
 	/* Called whenever we call invalidateOptionsMenu() */
 	@Override
@@ -917,32 +660,31 @@ public class MyMealActivity extends Activity implements OnGestureListener {
 	}
 
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		Log.e("error", "onPostCreate");
-		super.onPostCreate(savedInstanceState);
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.e("error", "onOptionsItemSelected");
+		if (NavMenuView.onOptionsItemSelected(item))
+			return true;
+		return super.onOptionsItemSelected(item);
+	}
 
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
+	@Override
+	public void setTitle(CharSequence title) {
+		Log.e("error", "setTitle");
+		NavMenuView.setTitle(title);
 	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		Log.e("error", "onConfigurationChanged");
 		super.onConfigurationChanged(newConfig);
-		mDrawerToggle.onConfigurationChanged(newConfig);
+		NavMenuView.onConfigurationChanged(newConfig);
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.e("error", "onOptionsItemSelected");
-		// Pass the event to ActionBarDrawerToggle, if it returns
-		// true, then it has handled the app icon touch event
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		// Handle your other action bar items...
-
-		return super.onOptionsItemSelected(item);
+	protected void onPostCreate(Bundle savedInstanceState) {
+		Log.e("error", "onPostCreate");
+		super.onPostCreate(savedInstanceState);
+		NavMenuView.onPostCreateTasks(savedInstanceState);
 	}
-
+	
 }

@@ -22,7 +22,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.app.mymeal.R;
-import com.app.mymeal.adapters.MyCustomAdapter;
+import com.app.mymeal.adapters.MealAdapter;
 import com.app.mymeal.data.Meal;
 import com.app.mymeal.util.Utils;
 

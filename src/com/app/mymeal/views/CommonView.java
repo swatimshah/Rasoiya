@@ -2,7 +2,7 @@ package com.app.mymeal.views;
 
 import java.util.StringTokenizer;
 
-import com.app.mymeal.adapters.MyCustomAdapter;
+import com.app.mymeal.adapters.MealAdapter;
 
 import android.app.Activity;
 import android.app.SearchManager;
@@ -27,9 +27,9 @@ public class CommonView {
 	private SearchView selectedSearchView;
 	private String mealType;
 	private Context context;
-	private MyCustomAdapter dataAdapter;
+	private MealAdapter dataAdapter;
 
-	public CommonView(Context context, MyCustomAdapter dataAdapter) {
+	public CommonView(Context context, MealAdapter dataAdapter) {
 		this.context = context;
 		this.dataAdapter = dataAdapter;
 	}
@@ -47,13 +47,13 @@ public class CommonView {
 
 
 
-	public MyCustomAdapter getDataAdapter() {
+	public MealAdapter getDataAdapter() {
 		return dataAdapter;
 	}
 
 
 
-	public void setDataAdapter(MyCustomAdapter dataAdapter) {
+	public void setDataAdapter(MealAdapter dataAdapter) {
 		this.dataAdapter = dataAdapter;
 	}
 

@@ -21,7 +21,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 
-public class MyCustomAdapter extends ArrayAdapter<Meal> {
+public class MealAdapter extends ArrayAdapter<Meal> {
 
 	private ArrayList<Meal> mealList;
 	private ArrayList<String> addedMealItems = new ArrayList<String>();
@@ -43,7 +43,7 @@ public class MyCustomAdapter extends ArrayAdapter<Meal> {
 		this.addedMealItems = addedMealItems;
 	}
 
-	public MyCustomAdapter(Context context, int textViewResourceId,
+	public MealAdapter(Context context, int textViewResourceId,
 			ArrayList<Meal> mealList) {
 		super(context, textViewResourceId, mealList);
 		this.context = context;
@@ -56,7 +56,7 @@ public class MyCustomAdapter extends ArrayAdapter<Meal> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		final ViewHolder holder;
+		final MealHolder holder;
 		Log.e("error", "ConvertView" + String.valueOf(position));
 
 		if (convertView == null) {
@@ -64,7 +64,7 @@ public class MyCustomAdapter extends ArrayAdapter<Meal> {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = vi.inflate(R.layout.meal_list, null);
 
-			holder = new ViewHolder();
+			holder = new MealHolder();
 			holder.name = (TextView) convertView.findViewById(R.id.name);
 			holder.checkBox = (CheckBox) convertView
 					.findViewById(R.id.checkBox1);
@@ -74,7 +74,7 @@ public class MyCustomAdapter extends ArrayAdapter<Meal> {
 			convertView.setTag(holder);
 
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (MealHolder) convertView.getTag();
 
 		}
 

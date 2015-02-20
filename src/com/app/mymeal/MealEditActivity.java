@@ -3,8 +3,8 @@ package com.app.mymeal;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.app.mymeal.adapters.MyCustomAdapter;
-import com.app.mymeal.adapters.ViewHolder;
+import com.app.mymeal.adapters.MealAdapter;
+import com.app.mymeal.adapters.MealHolder;
 import com.app.mymeal.data.Meal;
 import com.app.mymeal.persistence.DataBaseHelper;
 import com.app.mymeal.util.Utils;
@@ -42,7 +42,7 @@ import android.widget.Toast;
 
 public class MealEditActivity extends Activity {
 
-	MyCustomAdapter dataAdapter = null;
+	MealAdapter dataAdapter = null;
 	static String mDate = "";
 	CommonView commonView = null;
 	MealView breakfast = null;
@@ -65,7 +65,7 @@ public class MealEditActivity extends Activity {
 		onNewIntent(getIntent());
 
 		ArrayList<Meal> mealList = new ArrayList<Meal>();
-		dataAdapter = new MyCustomAdapter(this, R.layout.meal_list, mealList);
+		dataAdapter = new MealAdapter(this, R.layout.meal_list, mealList);
 
 		commonView = new CommonView(this, dataAdapter);
 		commonView.setBreakfast(breakfast);
@@ -349,7 +349,7 @@ public class MealEditActivity extends Activity {
 				Intent intent = new Intent(view.getContext(),
 						RecipeEditActivity.class);
 				Log.e("error", "Recipe in list");
-				intent.putExtra("recipeName", ((ViewHolder) view.getTag()).name
+				intent.putExtra("recipeName", ((MealHolder) view.getTag()).name
 						.getText().toString());
 				intent.putExtra("action", "View");
 
@@ -387,7 +387,7 @@ public class MealEditActivity extends Activity {
 		// TODO Auto-generated method stub
 		Log.e("error", "onResume");
 		super.onResume();
-
+		
 	}
 
 	@Override
