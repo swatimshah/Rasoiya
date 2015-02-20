@@ -1,10 +1,10 @@
 package com.app.mymeal;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 import com.app.mymeal.persistence.DataBaseHelper;
+import com.app.mymeal.views.IngredientsView;
+import com.app.mymeal.views.MethodView;
 import com.app.mymeal.views.NavMenuView;
 
 import android.animation.Animator;
@@ -32,13 +32,10 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,8 +48,8 @@ public class RecipeEditActivity extends Activity implements
 	String mPrepTime = "";
 	View focusedView = null;
 	View previousFocusedView = null;
-	LinearLayout replacedll = null;
-	LinearLayout replacedml = null;
+	IngredientsView replacedll = null;
+	MethodView replacedml = null;
 	View methodFocusedView = null;
 	View previousMethodFocusedView = null;
 	int ingredientIndexI = 0;
@@ -1004,60 +1001,9 @@ public class RecipeEditActivity extends Activity implements
 							integratedTokenMinusUnit.lastIndexOf(" ")).trim();
 				}
 
-				replacedll = new LinearLayout(getApplicationContext());
-				replacedll.setOrientation(LinearLayout.HORIZONTAL);
-
-				EditText et1 = new EditText(getApplicationContext());
-				et1.setText(ingredientName);
-				et1.setBackgroundResource(android.R.drawable.editbox_background);
-				et1.setTextColor(Color.BLACK);
-				et1.setMaxWidth(300);
-				replacedll.addView(et1);
-
-				EditText et2 = new EditText(getApplicationContext());
-				et2.setText(ingredientQuantity);
-				et2.setBackgroundResource(android.R.drawable.editbox_background);
-				et2.setTextColor(Color.BLACK);
-				et2.setInputType(InputType.TYPE_CLASS_NUMBER
-						| InputType.TYPE_NUMBER_FLAG_DECIMAL);
-				replacedll.addView(et2);
-
-				String[] unit_array = getResources().getStringArray(
-						R.array.unit_array);
-				List<String> unitList = Arrays.asList(unit_array);
-				Spinner spinner = new Spinner(getApplicationContext());
-				ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-						getApplicationContext(),
-						android.R.layout.simple_spinner_dropdown_item, unitList);
-				spinner.setAdapter(spinnerArrayAdapter);
-				spinner.setBackgroundResource(android.R.drawable.editbox_background);
-				spinner.setLayoutParams(new LayoutParams(150, 78));
-				int spinnerPosition = spinnerArrayAdapter
-						.getPosition(ingredientUnit);
-				spinner.setSelection(spinnerPosition);
-				spinner.setOnItemSelectedListener(OnUnitSpinnerListener);
-				replacedll.addView(spinner);
-
-				ImageView plus = new ImageView(getApplicationContext());
-				plus.setImageResource(R.drawable.plus_sign);
-				LinearLayout.LayoutParams layoutParamsPlus = new LinearLayout.LayoutParams(
-						60, 60);
-				layoutParamsPlus.setMargins(20, 2, 10, 2);
-				plus.setLayoutParams(layoutParamsPlus);
-				plus.setOnClickListener(plusIngredientsListener);
-				replacedll.addView(plus);
-
-				ImageView minus = new ImageView(getApplicationContext());
-				minus.setImageResource(R.drawable.icon_minus);
-				LinearLayout.LayoutParams layoutParamsMinus = new LinearLayout.LayoutParams(
-						60, 60);
-				layoutParamsMinus.setMargins(20, 2, 10, 2);
-				minus.setLayoutParams(layoutParamsMinus);
-				minus.setOnClickListener(minusIngredientsListener);
-				replacedll.addView(minus);
-
-				replacedll.setId(id);
-
+				replacedll = new IngredientsView(getApplicationContext(), ingredientName, ingredientQuantity, ingredientUnit, id);
+				replacedll.getPlus().setOnClickListener(plusIngredientsListener);
+				replacedll.getMinus().setOnClickListener(minusIngredientsListener);
 				llIngredients.addView(replacedll, id - 1000);
 
 				if (focusedView != null)
@@ -1145,36 +1091,9 @@ public class RecipeEditActivity extends Activity implements
 
 				String methodText = ((EditText) v).getText().toString();
 
-				replacedml = new LinearLayout(getApplicationContext());
-				replacedml.setOrientation(LinearLayout.HORIZONTAL);
-
-				EditText et1 = new EditText(getApplicationContext());
-				et1.setText(methodText);
-				et1.setBackgroundResource(android.R.drawable.editbox_background);
-				et1.setTextColor(Color.BLACK);
-				et1.setMaxWidth(500);
-				replacedml.addView(et1);
-
-				ImageView plus = new ImageView(getApplicationContext());
-				plus.setImageResource(R.drawable.plus_sign);
-				LinearLayout.LayoutParams layoutParamsPlus = new LinearLayout.LayoutParams(
-						60, 60);
-				layoutParamsPlus.setMargins(20, 2, 10, 2);
-				plus.setLayoutParams(layoutParamsPlus);
-				plus.setOnClickListener(plusMethodListener);
-				replacedml.addView(plus);
-
-				ImageView minus = new ImageView(getApplicationContext());
-				minus.setImageResource(R.drawable.icon_minus);
-				LinearLayout.LayoutParams layoutParamsMinus = new LinearLayout.LayoutParams(
-						60, 60);
-				layoutParamsMinus.setMargins(20, 2, 10, 2);
-				minus.setLayoutParams(layoutParamsMinus);
-				minus.setOnClickListener(minusMethodListener);
-				replacedml.addView(minus);
-
-				replacedml.setId(id);
-
+				replacedml = new MethodView(getApplicationContext(), methodText, id);
+				replacedml.getPlus().setOnClickListener(plusMethodListener);
+				replacedml.getMinus().setOnClickListener(minusMethodListener);
 				llMethod.addView(replacedml, id - 2000);
 
 				if (methodFocusedView != null)
@@ -1257,44 +1176,7 @@ public class RecipeEditActivity extends Activity implements
 		
 	};
 
-	/**
-	 * Slide menu item click listener
-	 * */
-	private class SlideMenuClickListener implements
-			ListView.OnItemClickListener {
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			Log.e("error", "SlideMenuClickListener.onItemClick");
-			// display view for selected nav drawer item
-			displayView(position);
-		}
-	}
 
-	private void displayView(int position) {
-
-		switch (position) {
-		case 0:
-			// Toast.makeText(getApplicationContext(),
-			// "You selected : " + "[Home] ", Toast.LENGTH_SHORT).show();
-
-			Intent intentHome = new Intent(getApplicationContext(),
-					MyMealActivity.class);
-			startActivity(intentHome);
-
-			break;
-		case 1:
-			// Toast.makeText(getApplicationContext(),
-			// "You selected : " + "[Recipes] ", Toast.LENGTH_SHORT)
-			// .show();
-			Intent intentRecipe = new Intent(getApplicationContext(),
-					RecipesListActivity.class);
-			startActivity(intentRecipe);
-
-			break;
-
-		}
-	}
 
 
 	/* Called whenever we call invalidateOptionsMenu() */
@@ -1498,16 +1380,6 @@ public class RecipeEditActivity extends Activity implements
 		}
 	};
 
-	private OnItemSelectedListener OnUnitSpinnerListener = new AdapterView.OnItemSelectedListener() {
-		public void onItemSelected(AdapterView<?> parent, View view, int pos,
-				long id) {
-			((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-			((TextView) parent.getChildAt(0)).setTextSize(15);
-		}
-
-		public void onNothingSelected(AdapterView<?> parent) {
-		}
-	};
 
 	private void refreshView() {
 
